@@ -56,7 +56,7 @@ export function MessageList() {
   const virtualizer = useVirtualizer({
     count: messages.length,
     getScrollElement: () => scrollContainerRef.current,
-    estimateSize: (index) => {
+    estimateSize: (index) => { //估算消息高度
       const msg = messages[index]
       if (!msg) return 100
       if (msg.thinking) return 250
@@ -64,7 +64,7 @@ export function MessageList() {
       if (msg.role === 'user') return 80
       return 150
     },
-    overscan: 3,
+    overscan: 3, //预渲染数量 提高滚动流畅度，减少滚动时的空白闪烁
   })
   
   const virtualItems = virtualizer.getVirtualItems()
@@ -194,7 +194,7 @@ export function MessageList() {
     <div
       ref={scrollContainerRef}
       className="flex-1 overflow-y-auto custom-scrollbar-auto"
-      style={{ overflowAnchor: 'auto' }}
+      style={{ overflowAnchor: 'auto' }} //防止滚动位置跳动 浏览器会记住滚动位置的相对锚点，即使内容高度变化
     >
       <div
         style={{

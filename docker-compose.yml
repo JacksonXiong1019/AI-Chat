@@ -36,8 +36,9 @@ services:
       DATABASE_URL: "postgresql://skychat:password123@postgres:5432/skychat"
       NODE_ENV: production
     env_file:
-      - .env
-      - .env.production
+      - .env.local
+      # - .env
+      # - .env.production
     volumes:
       - ./generated:/app/public/generated
     depends_on:

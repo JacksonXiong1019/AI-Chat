@@ -1,0 +1,9 @@
+{
+    "extends": "../../../tsconfig.server.json",
+    "compilerOptions": {
+        "outDir": "./dist",
+        "types": ["vitest/globals"]
+        // "declaration": false
+        // "declarationDir": "./dist/types",
+    }
+}

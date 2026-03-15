@@ -10,10 +10,10 @@ export interface StreamBufferOptions {
 }
 
 export class StreamBuffer {
-  private buffer: string = ''
-  private rafId: number | null = null
-  private onFlush: (content: string) => void
-  private isSSR: boolean
+  private buffer: string = '' //存储累计的流式内容
+  private rafId: number | null = null //存储requestAnimationFrame的ID
+  private onFlush: (content: string) => void //刷新回调函数
+  private isSSR: boolean //检测是否在服务端渲染环境
 
   constructor(options: StreamBufferOptions) {
     this.onFlush = options.onFlush

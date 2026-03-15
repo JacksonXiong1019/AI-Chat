@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "alwaysStrict": false,
+        "declaration": true,
+        "declarationMap": true,
+        "downlevelIteration": true,
+        "importHelpers": true,
+        "inlineSources": true,
+        "isolatedModules": true,
+        "lib": ["ESNext"],
+        "moduleResolution": "node",
+        "noErrorTruncation": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitReturns": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "preserveWatchOutput": true,
+        "sourceMap": true,
+        "strict": true,
+        "strictBindCallApply": false,
+        "target": "es2018",
+        "noUncheckedIndexedAccess": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "baseUrl": ".",
+        "paths": {
+            "@sky-monitor/monitor-sdk-core": ["packages/core/src/index.ts"],
+            "@sky-monitor/monitor-sdk-browser-utils": ["packages/browser-utils/src/index.ts"],
+            "@sky-monitor/monitor-sdk-browser": ["packages/browser/src/index.ts"]
+        }
+    }
+}
