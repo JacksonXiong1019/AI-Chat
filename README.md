@@ -1,3 +1,5 @@
+Markdown
+
 # 🤖 AI Chat
 
 > 一个现代化的全栈 AI 智能助手，支持多模型流畅对话、语音交互与文件上下文理解。
@@ -55,29 +57,59 @@
 - [pnpm](https://pnpm.io/) 
 
 ### 2. 克隆与安装
+```bash
 git clone [https://github.com/yourusername/ai-chat.git](https://github.com/yourusername/ai-chat.git)
 cd ai-chat
 pnpm install
+3. 环境变量配置
+创建 .env.local 并填入必要配置：
 
-### 3.数据库初始化
-# （1）. 生成 Prisma Client 并在数据库中执行表结构迁移
+Bash
+
+# 数据库
+DATABASE_URL="postgresql://user:password@localhost:5432/skychat"
+
+# Auth.js
+AUTH_SECRET="your-secret-key"
+AUTH_TRUST_HOST="true"
+
+# OAuth
+AUTH_GOOGLE_ID="your-google-client-id"
+AUTH_GOOGLE_SECRET="your-google-client-secret"
+AUTH_GITHUB_ID="your-github-client-id"
+AUTH_GITHUB_SECRET="your-github-client-secret"
+
+# 硅基流动 API
+SILICONFLOW_API_KEY="your-api-key"
+4. 数据库初始化
+(1) 生成 Prisma Client 并在数据库中执行表结构迁移
+
+Bash
+
 pnpm prisma migrate dev
+(2) 生成类型声明
 
-# （2）. 生成类型声明
+Bash
+
 pnpm prisma generate
+(3) (可选) 填充初始测试数据
 
-# （3）. (可选) 填充初始测试数据
+Bash
+
 pnpm db:seed
+5. 启动服务
+Bash
 
-###4. 启动服务
 # 启动本地开发服务器
 pnpm dev
+6. 生产环境构建
+Bash
 
-###5.生产环境构建
 pnpm build
 pnpm start
+📜 常用命令脚本
+Bash
 
-###常用命令脚本
 # 日志清理
 pnpm run clean:logs          # 预览将被清理的 console.log 语句
 pnpm run clean:logs --write  # 执行清理操作并覆盖文件
@@ -88,25 +120,36 @@ pnpm db:studio               # 启动 Prisma Studio 网页端管理工具
 # 数据库维护
 pnpm db:seed                 # 运行种子脚本，填充测试数据
 pnpm db:reset                # 危险操作：清空并重置整个数据库
+📁 核心目录结构
+Plaintext
 
-###核心目录
-├── app/                  # Next.js App Router 路由层
-│   ├── api/              # 服务端 API 接口
-│   ├── auth/             # 认证相关页面 (登录/注册/错误)
-│   └── chat/             # 核心对话主界面
-├── components/           # 全局与通用 UI 组件 (shadcn/ui 等)
-├── features/             # 核心业务模块 (垂直拆分，高内聚)
-│   ├── auth/             # 鉴权逻辑与组件
-│   ├── chat/             # 对话输入、消息渲染、状态机
-│   ├── conversation/     # 会话列表与历史管理
-│   ├── share/            # 对话分享功能
-│   └── voice/            # 录音与 TTS 播放逻辑
-├── lib/                  # 基础设施与通用工具
-│   ├── hooks/            # 自定义 React Hooks
-│   ├── services/         # 外部服务接口封装
-│   └── utils/            # 纯函数与辅助工具
-├── server/               # 纯服务端核心逻辑 (Controller/Service 模式)
-│   ├── auth/             # Auth.js 高级配置
-│   ├── db/               # 数据库连接实例
-│   └── services/         # 后端业务调度 (大模型流式处理等)
-└── prisma/               # 数据库 Schema 定义与迁移记录
+app/                      # Next.js App Router 路由层
+├── api/                  # 服务端 API 接口
+├── auth/                 # 认证相关页面 (登录/注册/错误)
+└── chat/                 # 核心对话主界面
+
+components/               # 全局与通用 UI 组件
+├── ui/                   # shadcn/ui 组件库
+└── ...
+
+features/                 # 核心业务模块 (垂直拆分，高内聚)
+├── auth/                 # 鉴权逻辑与组件
+├── chat/                 # 对话输入、消息渲染、状态机
+├── conversation/         # 会话列表与历史管理
+├── share/                # 对话分享功能
+└── voice/                # 录音与 TTS 播放逻辑
+
+lib/                      # 基础设施与通用工具
+├── hooks/                # 自定义 React Hooks
+├── services/             # API 服务调用
+└── utils/                # 纯函数与辅助工具
+
+server/                   # 纯服务端核心逻辑
+├── auth/                 # Auth.js 配置
+├── db/                   # 数据库连接与实例
+└── services/             # 后端业务调度与服务逻辑
+
+prisma/                   # Prisma ORM 配置
+└── schema.prisma         # 数据库数据模型
+📄 License
+MIT
