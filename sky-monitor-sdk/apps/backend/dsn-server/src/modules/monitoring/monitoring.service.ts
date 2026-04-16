@@ -487,7 +487,7 @@ export class MonitoringService {
             let replayEvents = replayData.events || []
             let originalSize = 0
             let compressedSize = 0
-            let compressed = replayData.metadata?.compressed || false
+            const compressed = replayData.metadata?.compressed || false
 
             if (compressed) {
                 // 解压缩数据

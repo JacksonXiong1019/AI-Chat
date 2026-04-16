@@ -100,7 +100,7 @@ export function extractEventMessage(event: Event): EventMessage {
         // 如果没有,则从 event_data 中提取
         let name = event.event_name
         let value = event.perf_value
-        let rating = event.perf_rating || (eventData?.rating as string)
+        const rating = event.perf_rating || (eventData?.rating as string)
 
         // 如果后端字段为空,从 event_data 提取
         if (!name && eventData?.name) {

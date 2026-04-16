@@ -33,7 +33,7 @@ export function safeJsonParse<T>(data: string | object, fallback: T | null = nul
     try {
         // 清理控制字符（ASCII 0-31 和 127-159）
         // 这些字符在 JSON 字符串中是非法的
-        // eslint-disable-next-line no-control-regex
+         
         const cleaned = data.replace(/[\u0000-\u001F\u007F-\u009F]/g, '')
         return JSON.parse(cleaned) as T
     } catch (error) {

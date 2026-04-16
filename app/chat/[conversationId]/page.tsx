@@ -41,14 +41,13 @@ ChatSidebar.displayName = 'ChatSidebar'
  * 组件负责调用 loadMessages 加载消息
  */
 function ConversationContent() {
-  const params = useParams()
+  const { conversationId } = useParams<{ conversationId: string }>()
   const router = useRouter()
-  const conversationId = params.conversationId as string
 
   // 当 conversationId 变化时，加载消息
   useEffect(() => {
     if (!conversationId) {
-      router.push('/')
+      router.replace('/')
       return
     }
 
@@ -58,7 +57,7 @@ function ConversationContent() {
   return (
     <MainLayout sidebar={<ChatSidebar />} header={<Header />}>
       <MessageList key={conversationId} />
-      <ChatInput conversationId={conversationId} />
+      <ChatInput key={conversationId} conversationId={conversationId} />
     </MainLayout>
   )
 }
