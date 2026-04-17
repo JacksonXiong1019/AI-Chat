@@ -13,11 +13,12 @@ import {
   SamplingIntegration,
   DeduplicationIntegration,
   SessionIntegration,
-  PerformanceIntegration,
-  BatchedTransport
+  PerformanceIntegration
 } from '@jerry_aurora/sky-monitor-sdk'
 
-let monitoring: any = null
+type MonitorInstance = Awaited<ReturnType<typeof init>>
+
+let monitoring: MonitorInstance | null = null
 let isInitializing = false
 
 /**
@@ -62,7 +63,7 @@ export async function getMonitor() {
         captureMessage: () => {},
         setUser: () => {},
         setTag: () => {}
-      }
+      } as unknown as MonitorInstance
     } finally {
       isInitializing = false
     }

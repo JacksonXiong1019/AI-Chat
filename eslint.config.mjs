@@ -16,6 +16,7 @@ const eslintConfig = [
       '.next/**',
       'out/**',
       'build/**',
+      'sky-monitor-sdk/**',
       'next-env.d.ts',
       'types/next-auth.d.ts',
     ],

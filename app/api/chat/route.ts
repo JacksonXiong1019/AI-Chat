@@ -39,6 +39,11 @@ export async function POST(req: Request) {
   }
 
   // 4. 调用 ChatService 处理
+  // stream: 流式输出
+  // sessionId: 当前响应会话 id
+  // conversationId: 对话 id
+  // conversationTitle: 对话标题
+
   try {
     const { stream, sessionId, conversationId, conversationTitle } = await handleChatRequest(
       userId,
